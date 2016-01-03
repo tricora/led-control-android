@@ -12,7 +12,12 @@
         based on your message history
     </string>
 
-    <string name="pref_server_url">Server Url</string>
+    <string name="pref_server_ip">Server IP</string>
+    <string name="pref_server_port">Port</string>
+    <string name="pref_server_timeout">Request Timeout</string>
+    <string name="pref_allowed_packages">Allowed Packages</string>
+    <string name="pref_description_allowed_packages">Packages of Notification to handle</string>
+    <string name="pref_key_allowed_packages">key_allowed_packages</string>
 
     <string name="pref_title_display_name">Display name</string>
     <string name="pref_default_display_name">John Smith</string>

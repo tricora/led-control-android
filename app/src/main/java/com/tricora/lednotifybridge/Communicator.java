@@ -18,43 +18,48 @@ public class Communicator {
     private Context ctx;
     private boolean enabled;
 
+    private String serverIP = "192.168.0.100";
+    private int port = 9000;
+    private int timeout = 3000;
 
     public Communicator(Context ctx) {
         this.ctx = ctx;
-
         enabled = isHomeWLAN();
-
     }
 
-//    @Override
-//    public void onReceive(Context context, Intent intent) {
-//        ConnectivityManager conMan = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
-//        NetworkInfo netInfo = conMan.getActiveNetworkInfo();
-//        if (netInfo != null && netInfo.getType() == ConnectivityManager.TYPE_WIFI) {
-//            enabled = isHomeWLAN();
-//            Toast.makeText(ctx, "Home WLAN connected", Toast.LENGTH_LONG).show();
-//        } else {
-//            enabled = false;
-//            Toast.makeText(ctx, "Home WLAN gone", Toast.LENGTH_LONG).show();
-//        }
-//
-//        Log.i("LedNotifyBridge", "connection changed: " + enabled);
-//
-//    }
+    public Communicator(Context ctx, String ip, int port) {
+        this.ctx = ctx;
+        enabled = isHomeWLAN();
+
+        this.serverIP = ip;
+        this.port = port;
+    }
+
+    public void setServerIP(String serverIP) {
+        this.serverIP = serverIP;
+        Log.i("LedNotifyBridge", "IP changed: " + serverIP);
+    }
+
+    public void setPort(int port) {
+        this.port = port;
+        Log.i("LedNotifyBridge", "Port changed: " + port);
+    }
+
+    public void setTimeout(int timeout) {
+        this.timeout = timeout;
+        Log.i("LedNotifyBridge", "timeout changed: " + timeout);
+    }
 
     public void sendRequest(StatusBarNotification sbn) {
 
         Log.i("LedNotifyBridge", "" + isHomeWLAN());
         HttpURLConnection urlConnection = null;
         try {
-            URL url = new URL("http://192.168.0.100:9000/posted");
+            URL url = new URL("http://" + serverIP + ":" + port + "/posted");
             urlConnection = (HttpURLConnection) url.openConnection();
-            urlConnection.setConnectTimeout(3000);
+            urlConnection.setConnectTimeout(timeout);
             //urlConnection.setRequestMethod("POST");
             InputStream in = urlConnection.getInputStream();
-
-
-
         } catch (Exception e) {
             e.printStackTrace();
         } finally {

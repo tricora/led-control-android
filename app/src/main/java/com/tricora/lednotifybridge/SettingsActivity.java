@@ -158,7 +158,9 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
             addPreferencesFromResource(R.xml.pref_general);
             setHasOptionsMenu(true);
 
-            bindPreferenceSummaryToValue(findPreference("server_url"));
+            bindPreferenceSummaryToValue(findPreference("server_ip"));
+            bindPreferenceSummaryToValue(findPreference("server_port"));
+            bindPreferenceSummaryToValue(findPreference("server_timeout"));
 
         }
 

@@ -3,9 +3,26 @@
 
 
     <EditTextPreference
-        android:title="@string/pref_server_url"
-        android:key="server_url"
-        android:defaultValue="http://192.168.0.100:9000"
+        android:title="@string/pref_server_ip"
+        android:key="server_ip"
+        android:defaultValue="192.168.0.100"
         android:inputType="textUri" />
+
+    <EditTextPreference
+        android:title="@string/pref_server_port"
+        android:key="server_port"
+        android:defaultValue="9000"
+        android:inputType="number" />
+
+    <EditTextPreference
+        android:title="@string/pref_server_timeout"
+        android:key="server_timeout"
+        android:defaultValue="3000"
+        android:inputType="number" />
+
+    <com.tricora.lednotifybridge.PackageListPreference
+        android:title="@string/pref_allowed_packages"
+        android:summary="@string/pref_description_allowed_packages"
+        android:key="allowed_packages" />
 
 </PreferenceScreen>
